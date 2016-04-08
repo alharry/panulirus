@@ -6,7 +6,7 @@
 \usage{
 species_line(data, Species, fishery_code, fishery_names,
   start_year = min(data$year, na.rm = T), end_year = max(data$year, na.rm =
-  T), col = TRUE, save = FALSE, ...)
+  T), col = TRUE, add_cumulative = FALSE, save = FALSE, ...)
 }
 \arguments{
 \item{data}{A data frame of a CAES data extraction}
