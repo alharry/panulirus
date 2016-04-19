@@ -2,6 +2,8 @@
 #' 
 #' 
 #' An extremely boring plotting theme that differs slightly from theme_classic in ggplot2
+#' @export
+
 theme_vanilla<-function(){
   ggplot2::theme_classic()+
   ggplot2::theme(panel.background=element_blank(),
@@ -29,6 +31,7 @@ theme_vanilla<-function(){
 #' @examples 
 #' data(sunspots) 
 #' delta_mean(sunspots,CI=TRUE)
+#' @export
 
 
 delta_mean<-function(x, na.rm=FALSE,log=FALSE,CI=FALSE){

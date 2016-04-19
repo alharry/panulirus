@@ -11,6 +11,7 @@
 #' @param col Should the graph be in colour? (TRUE or FALSE)
 #' @examples generic_bar(year, catch, fishery, species, data=data)
 #' @return  A ggplot object
+#' @export
 
 generic_bar = function(x,y,group=NULL,panel=NULL,data,col=TRUE)
 {
