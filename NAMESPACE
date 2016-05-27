@@ -2,4 +2,5 @@
 
 export(delta_mean)
 export(generic_bar)
+export(generic_line)
 export(theme_vanilla)
