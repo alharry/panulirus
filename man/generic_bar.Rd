@@ -26,6 +26,7 @@ A ggplot object
 A generic bivariate barplot. Minimally requires x and y variables but can also take additional grouping and paneling variables.
 }
 \examples{
-generic_bar(year, catch, fishery, species, data=data)
+data(tuna)
+generic_bar(year, catch, region, species, data=tuna)
 }
 

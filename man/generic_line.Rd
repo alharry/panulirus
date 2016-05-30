@@ -19,13 +19,11 @@ generic_line(x, y, group = NULL, panel = NULL, data, col = TRUE)
 
 \item{col}{Should the graph be in colour? (TRUE or FALSE)}
 }
-\value{
-A ggplot object
-}
 \description{
 A generic bivariate line plot. Minimally requires x and y variables but can also take additional grouping and paneling variables.
 }
 \examples{
-generic_line(year, catch, fishery, species, data=data)
+data(tuna)
+generic_line(year, catch, region, species, data=tuna)
 }
 
