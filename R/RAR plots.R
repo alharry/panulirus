@@ -42,7 +42,7 @@ generic_bar = function(x,y,group=NULL,panel=NULL,data,col=TRUE)
   
   # Theme
   p<-p+theme_vanilla()+
-    ylab("Catch (tonnes)")+xlab("")+
+    ylab("")+xlab("")+
     theme(legend.title=element_blank())
   
   # Axis ticks
@@ -95,7 +95,7 @@ generic_line = function(x,y,group=NULL,panel=NULL,data,col=TRUE)
   
   # Theme
   p<-p+theme_vanilla()+
-    ylab("Catch (tonnes)")+xlab("")+
+    ylab("")+xlab("")+
     theme(legend.title=element_blank())
   
   # Axis ticks
