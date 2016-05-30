@@ -4,7 +4,7 @@
 \name{tuna}
 \alias{tuna}
 \title{Global catch of yellowfin and bigeye tunas 1950 - 1980}
-\format{A data frame with 488 rows and 4 variables:}
+\format{A data frame with 488 rows and 4 variables}
 \source{
 \url{http://www.fao.org/}
 }
