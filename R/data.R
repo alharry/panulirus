@@ -4,4 +4,5 @@
 #'
 #' @format A data frame with 488 rows and 4 variables:
 #' @source \url{http://www.fao.org/}
+#' @export
 "tuna"
