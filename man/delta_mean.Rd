@@ -11,14 +11,16 @@ delta_mean(x, na.rm = FALSE, log = FALSE, CI = FALSE)
 
 \item{na.rm}{logical. Should NA values be removed?}
 
-\item{log}{logical. Don't back-transform i.e. leave in log-space}
+\item{log}{logical. If FALSE, the exponent of the mean and confidence intervals is returned}
 
-\item{CI}{logical. If true returns the variance and upper and lower 95 per cent confidence intervals of the mean}
+\item{CI}{logical. If true returns the standard deviation and upper and lower 95 per cent confidence intervals of the mean}
 }
 \value{
 mean The mean of \code{x} adjusted for zero-inflation and lognormal bias
 
-var The variance of \code{x} adjusted for zero-inflation and lognormal bias
+sd The standard deviation of \code{x} (square root of the variance) adjusted for zero-inflation and lognormal bias
+
+p Zero inflation factor. The proportion of \code{x}>0
 
 lower,upper The upper and lower 95 per cent confidence intervals of the mean
 }

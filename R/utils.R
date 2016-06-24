@@ -22,11 +22,12 @@ theme_vanilla<-function(){
 #' 
 #' @param x numeric. The variable of interest. 
 #' @param na.rm logical. Should NA values be removed? 
-#' @param log logical. Don't back-transform i.e. leave in log-space 
-#' @param CI logical. If true returns the variance and upper and lower 95 per cent confidence intervals of the mean 
+#' @param log logical. If FALSE, the exponent of the mean and confidence intervals is returned
+#' @param CI logical. If true returns the standard deviation and upper and lower 95 per cent confidence intervals of the mean 
 #' @references Fletcher, D. (2008) Confidence intervals for the mean of the delta-lognormal distribution. \emph{Environ Ecol Stat} 15: 175-189 
 #' @return mean The mean of \code{x} adjusted for zero-inflation and lognormal bias
-#' @return var The variance of \code{x} adjusted for zero-inflation and lognormal bias
+#' @return sd The standard deviation of \code{x} (square root of the variance) adjusted for zero-inflation and lognormal bias
+#' @return p Zero inflation factor. The proportion of \code{x}>0
 #' @return lower,upper The upper and lower 95 per cent confidence intervals of the mean 
 #' @examples 
 #' data(sunspots) 
@@ -50,9 +51,9 @@ delta_mean<-function(x, na.rm=FALSE,log=FALSE,CI=FALSE){
   upper<-mean+2*sqrt(var)
   lower<-mean-2*sqrt(var)
   
-  if(CI==FALSE){out<-mean}else{out<-data.frame(mean=mean,var=var,lower=lower,upper=upper)}
+  if(CI==FALSE){out<-mean}else{out<-data.frame(mean=mean,sd=sqrt(var),p=p,lower=lower,upper=upper)}
   
-  if(log==FALSE){out<-exp(out)}
+  if(log==FALSE&CI==FALSE){out<-exp(out)}else if(log==FALSE&CI==TRUE){out[c(1,4,5)]<-exp(out)[c(1,4,5)]}
   
   return(out)
 }
