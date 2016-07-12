@@ -86,7 +86,7 @@ generic_line = function(x,y,group=NULL,panel=NULL,data,col=TRUE)
   if(col==TRUE)
   {p<-p+scale_colour_brewer(palette = "Paired",direction=1)}else
   {p<-p+scale_colour_grey()}}else
-  {p<-p+geom_line(colour="black",stat="identity",colour=ifelse(col==TRUE,"cornflowerblue","grey"))}
+  {p<-p+geom_line(colour=ifelse(col==TRUE,"cornflowerblue","black"),stat="identity",group=1)+geom_point(colour=ifelse(col==TRUE,"cornflowerblue","black"))}
   
   # Add panel
   if("panel"%in%names(new)){
