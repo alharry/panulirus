@@ -1,5 +1,5 @@
 # *panulirus*
-Utilities for the WA Department of Fisheries. Somewhere to store my R function so I don't forget where they are and what they do.
+Utilities for the WA Department of Fisheries.
 
 To install `panulirus`, first install `devtools` from CRAN then install from this github repository:
 
