@@ -16,7 +16,7 @@ theme_vanilla<-function(){
 #' Delta log normal mean
 #' 
 #' Function for calculating the mean of a zero-inflated log normal variable using the delta method. 
-#' Implements the Cox method in Fletcher (2008) for calculating the mean and approximate
+#' Implements the Cox method  (EQ 8) in Fletcher (2008) for calculating the mean and approximate
 #' confidence interval for a zero-inflated lognormal variable, or log normal variable when all values 
 #' are >0
 #' 
