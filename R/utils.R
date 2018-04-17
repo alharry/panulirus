@@ -41,6 +41,16 @@ delta_mean<-function(x, na.rm=FALSE,log=FALSE,CI=FALSE){
   if(anyNA(x)){stop("Contains NA values. Change na.rm=TRUE")}
   
   m<-length(x[x>0])
+  if(m == 0){
+    warning("No non-zero values for values for x")
+    
+    if(CI==FALSE){out<-0}else{out<-data.frame(mean=0,sd=0,p=1,lower=0,upper=0)}
+    
+    return(out)
+    
+    break
+  }
+  
   n<-length(x) 
   p<-m/n 
   c=(1-p)^(n-1)
