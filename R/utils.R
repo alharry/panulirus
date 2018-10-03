@@ -35,35 +35,73 @@ theme_vanilla<-function(){
 #' @export
 
 
-delta_mean<-function(x, na.rm=FALSE,log=FALSE,CI=FALSE){
-  
-  if(na.rm==TRUE){x=na.omit(x)}
-  if(anyNA(x)){stop("Contains NA values. Change na.rm=TRUE")}
-  
-  m<-length(x[x>0])
-  if(m == 0){
+delta_mean<-function (x, na.rm = FALSE, log = FALSE, CI = FALSE) 
+{
+  if (na.rm == TRUE) {
+    x = na.omit(x)
+  }
+  if (anyNA(x)) {
+    stop("Contains NA values. Change na.rm=TRUE")
+  }
+  m <- length(x[x > 0])
+  if (m == 0) {
     warning("No non-zero values for values for x")
-    
-    if(CI==FALSE){out<-0}else{out<-data.frame(mean=0,sd=0,p=1,lower=0,upper=0)}
-    
+    if (CI == FALSE) {
+      out <- 0
+    }
+    else {
+      out <- data.frame(mean = 0, sd = 0, p = 1, lower = 0, 
+                        upper = 0)
+    }
     return(out)
-    
     break
   }
-  
-  n<-length(x) 
-  p<-m/n 
-  c=(1-p)^(n-1)
-  d=1+(n-1)*p
-  
-  mean<-log(p)+mean(log(x[x>0]))+var(log(x[x>0]))/2
-  var<-((d-c)*(1-c*d)-m*(1-c)^2)/(m*(1-c*d)^2)+var(log(x[x>0]))/m+var(log(x[x>0]))^2/(2*(m+1))
-  upper<-mean+2*sqrt(var)
-  lower<-mean-2*sqrt(var)
-  
-  if(CI==FALSE){out<-mean}else{out<-data.frame(mean=mean,sd=sqrt(var),p=p,lower=lower,upper=upper)}
-  
-  if(log==FALSE&CI==FALSE){out<-exp(out)}else if(log==FALSE&CI==TRUE){out[c(1,4,5)]<-exp(out)[c(1,4,5)]}
-  
+  if (m == 1) {
+    warning("Only one non-zero value for x")
+    
+    n <- length(x)
+    p <- m/n
+    c = (1 - p)^(n - 1)
+    d = 1 + (n - 1) * p
+    mean <- log(p) + mean(log(x[x > 0]))
+    var <- ((d - c) * (1 - c * d) - m * (1 - c)^2)/(m * (1 - 
+                                                           c * d)^2)
+    upper <- mean + 2 * sqrt(var)
+    lower <- mean - 2 * sqrt(var)
+    
+    if (CI == FALSE) {
+      
+      out <- mean
+    }
+    else {
+      out <- data.frame(mean = mean, sd = sqrt(var), p = p, 
+                        lower = lower, upper = upper)
+    }
+  } else {
+    n <- length(x)
+    p <- m/n
+    c = (1 - p)^(n - 1)
+    d = 1 + (n - 1) * p
+    mean <- log(p) + mean(log(x[x > 0])) + var(log(x[x > 0]))/2
+    var <- ((d - c) * (1 - c * d) - m * (1 - c)^2)/(m * (1 - 
+                                                           c * d)^2) + var(log(x[x > 0]))/m + var(log(x[x > 0]))^2/(2 * 
+                                                                                                                      (m + 1))
+    upper <- mean + 2 * sqrt(var)
+    lower <- mean - 2 * sqrt(var)
+    if (CI == FALSE) {
+      out <- mean
+    }
+    else {
+      out <- data.frame(mean = mean, sd = sqrt(var), p = p, 
+                        lower = lower, upper = upper)
+    }
+  }
+  if (log == FALSE & CI == FALSE) {
+    out <- exp(out)
+  }
+  else if (log == FALSE & CI == TRUE) {
+    out[c(1, 4, 5)] <- exp(out)[c(1, 4, 5)]
+  }
   return(out)
 }
+
